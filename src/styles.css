@@ -1,0 +1,203 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-charcoal: var(--charcoal);
+  --color-ink: var(--ink);
+  --color-purple: var(--purple);
+  --color-indigo: var(--indigo);
+  --color-emerald: var(--emerald);
+  --color-cyan: var(--cyan);
+  --color-tangerine: var(--tangerine);
+  --color-rosegold: var(--rosegold);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.985 0.006 220);
+  --foreground: oklch(0.19 0.035 245);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 265);
+
+  --primary: oklch(0.45 0.14 220); /* ocean blue */
+  --primary-foreground: oklch(0.99 0.003 260);
+
+  --secondary: oklch(0.96 0.008 260);
+  --secondary-foreground: oklch(0.18 0.02 265);
+
+  --muted: oklch(0.965 0.008 260);
+  --muted-foreground: oklch(0.5 0.02 265);
+
+  --accent: oklch(0.72 0.14 190); /* cyan */
+  --accent-foreground: oklch(0.18 0.02 265);
+
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.92 0.008 260);
+  --input: oklch(0.92 0.008 260);
+  --ring: oklch(0.5 0.14 220);
+
+  --charcoal: oklch(0.19 0.015 265);
+  --ink: oklch(0.12 0.02 270);
+  --purple: oklch(0.5 0.15 230);
+  --indigo: oklch(0.43 0.15 245);
+  --emerald: oklch(0.68 0.13 180);
+  --cyan: oklch(0.77 0.12 210);
+  --tangerine: oklch(0.78 0.15 55);
+  --rosegold: oklch(0.78 0.09 30);
+
+  --gradient-hero: radial-gradient(1200px 600px at 10% 10%, oklch(0.54 0.14 225 / 0.38), transparent 60%),
+    radial-gradient(900px 500px at 90% 20%, oklch(0.55 0.13 195 / 0.32), transparent 60%),
+    radial-gradient(700px 500px at 50% 100%, oklch(0.72 0.13 185 / 0.22), transparent 60%);
+
+  --gradient-brand: linear-gradient(135deg, oklch(0.48 0.15 235), oklch(0.48 0.14 215) 55%, oklch(0.68 0.13 180));
+  --gradient-warm: linear-gradient(135deg, oklch(0.78 0.15 55), oklch(0.78 0.09 30));
+  --gradient-mint: linear-gradient(135deg, oklch(0.7 0.16 165), oklch(0.78 0.11 205));
+
+  --shadow-glow: 0 20px 60px -20px oklch(0.48 0.15 225 / 0.42);
+  --shadow-soft: 0 20px 50px -30px oklch(0.2 0.02 265 / 0.35);
+  --shadow-card: 0 1px 0 0 oklch(1 0 0 / 0.6) inset, 0 20px 40px -24px oklch(0.2 0.02 265 / 0.25);
+}
+
+.dark {
+  --background: oklch(0.14 0.02 270);
+  --foreground: oklch(0.98 0.003 260);
+  --card: oklch(0.19 0.02 270);
+  --card-foreground: oklch(0.98 0.003 260);
+  --popover: oklch(0.19 0.02 270);
+  --popover-foreground: oklch(0.98 0.003 260);
+  --primary: oklch(0.72 0.18 290);
+  --primary-foreground: oklch(0.14 0.02 270);
+  --secondary: oklch(0.24 0.03 270);
+  --secondary-foreground: oklch(0.98 0.003 260);
+  --muted: oklch(0.24 0.03 270);
+  --muted-foreground: oklch(0.72 0.02 260);
+  --accent: oklch(0.72 0.15 190);
+  --accent-foreground: oklch(0.14 0.02 270);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.72 0.18 290);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, white 65%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 60%, transparent);
+}
+
+@utility glass-dark {
+  background: color-mix(in oklab, var(--ink) 55%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+}
+
+@utility text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-mesh {
+  background-image: var(--gradient-hero);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility container-x {
+  padding-inline: 1.25rem;
+  margin-inline: auto;
+  max-width: 1240px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float-slow {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-14px) }
+}
+@utility animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,100% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+}
+@utility animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
