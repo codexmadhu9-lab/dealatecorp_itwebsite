@@ -14,7 +14,7 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "Explore Dealatecorp's product portfolio — Doctor Connect, MediStock, Visakha Beauty and Venture+ — plus enterprise business and technology services.",
+          "Explore Dealatecorp's product portfolio — Doctor Connect, MediStock, Visakha Beauty, MotoStock and Venture+ — plus enterprise business and technology services.",
       },
     ],
   }),
@@ -50,8 +50,8 @@ const business = [
 ];
 
 const productGroups = [
-  { title: "Healthcare Solutions", description: "Doctor Connect and MediStock â€” complete platforms for patients, doctors and pharmacies.", slugs: ["doctor-connect", "medistock"] },
-  { title: "Salon & Wellness", description: "Visakha Beauty — the complete salon operating system.", slugs: ["visakha-beauty"] },
+  { title: "Healthcare Solutions", description: "Doctor Connect and MediStock ” complete platforms for patients, doctors and pharmacies.", slugs: ["doctor-connect", "medistock"] },
+  { title: "Salon & Automotive", description: "Visakha Beauty and MotoStock — connected operations for salons and motorcycle dealerships.", slugs: ["visakha-beauty", "motostock"] },
   { title: "Real Estate", description: "Venture+ — property, customer, sales and employee management.", slugs: ["venture-plus"] },
 ];
 
@@ -69,7 +69,7 @@ function ProductsPage() {
             Enterprise-grade products, <span className="text-gradient">crafted end to end.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Four flagship products across healthcare, wellness and real estate — plus deep
+            Five flagship products across healthcare, wellness, automotive and real estate — plus deep
             business and technology services for global clients.
           </p>
         </div>
@@ -190,6 +190,12 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
           { title: "A structured path from inquiry to booking", text: "Leads are assigned, follow-ups are recorded and bookings are confirmed in a single workflow designed to prevent missed opportunities." },
           { title: "Secure control after the sale", text: "Documents, performance information and ownership-transfer history stay available to authorized teams as the organization grows." },
         ]
+      : project.slug === "motostock"
+        ? [
+            { title: "One connected dealership dashboard", text: "MotoStock brings motorcycle inventory, stock alerts, customers, bookings and revenue into one view, with visibility across showrooms and staff." },
+            { title: "From bike selection to payment and finance", text: "Connect each customer to a motorcycle and booking, record payments, manage finance applications and track EMI schedules. Invoices and KYC documents stay with the transaction." },
+            { title: "A complete journey through vehicle delivery", text: "Track pre-delivery inspection, registration and final payment before scheduling the handover. Delivery documents and a timestamped audit timeline preserve the complete transaction history." },
+          ]
       : [
           { title: "A calm, organized salon command centre", text: "Visakha Beauty gives the front desk a live view of appointments, customers, services and team schedules for a smooth daily operation." },
           { title: "Every guest receives a connected experience", text: "Customer preferences, previous visits, selected services and bills remain connected, helping the team offer more personal service." },
