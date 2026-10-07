@@ -107,14 +107,14 @@ function CareersPage() {
   );
 }
 
-const WHATSAPP = "918978764094";
+const HR_EMAIL = "dealatecorphr@gmail.com";
 
 function ApplyModal({ open, position, onClose }: { open: boolean; position: string; onClose: () => void }) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const parts = [
-      `*New Job Application*`,
+    const emailBody = [
+      `New Job Application`,
       `Position: ${position}`,
       `Name: ${fd.get("name")}`,
       `Email: ${fd.get("email")}`,
@@ -124,8 +124,10 @@ function ApplyModal({ open, position, onClose }: { open: boolean; position: stri
       `Message: ${fd.get("message") || "-"}`,
       `Resume link: ${fd.get("resumeLink") || "Not provided"}`,
     ];
-    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(parts.join("\n"))}`;
-    window.open(url, "_blank");
+    const subject = `Job Application - ${position}`;
+    const body = emailBody.join("\n");
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(HR_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     onClose();
   };
 
@@ -173,7 +175,7 @@ function ApplyModal({ open, position, onClose }: { open: boolean; position: stri
                 Submit Application
               </button>
               <p className="text-center text-xs text-muted-foreground">
-                Submitting will redirect you to WhatsApp with your details prefilled.
+                Submitting will open Gmail with your application details prefilled.
               </p>
             </form>
           </motion.div>
