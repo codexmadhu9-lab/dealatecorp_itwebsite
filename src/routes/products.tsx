@@ -53,6 +53,7 @@ const productGroups = [
   { title: "Healthcare Solutions", description: "Doctor Connect and MediStock ” complete platforms for patients, doctors and pharmacies.", slugs: ["doctor-connect", "medistock"] },
   { title: "Salon & Automotive", description: "Visakha Beauty and MotoStock — connected operations for salons and motorcycle dealerships.", slugs: ["visakha-beauty", "motostock"] },
   { title: "Real Estate", description: "Venture+ — property, customer, sales and employee management.", slugs: ["venture-plus"] },
+  { title: "Interior Design", description: "DC Interiors is an interior design website POC for client requirements, materials and project visibility.", slugs: ["dc-interiors"] },
 ];
 
 function ProductsPage() {
@@ -177,6 +178,10 @@ function ProductsPage() {
 }
 
 function ProjectDetails({ project, onClose }: { project: Project; onClose: () => void }) {
+  if (project.slug === "dc-interiors") {
+    return <DcInteriorsDetails project={project} onClose={onClose} />;
+  }
+
   const modules = project.functionalities ?? project.features.map((feature) => ({ title: feature.title, points: [feature.description] }));
   const story = project.category === "Healthcare"
     ? [
@@ -282,6 +287,131 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">These views show the kind of clean, people-first experience the platform provides across daily operations, customer interactions and management reporting.</p>
             <div className="mt-7 grid gap-4 md:grid-cols-2">
               {project.gallery.map((image, index) => <img key={image} src={image} alt={`${project.name} visual ${index + 1}`} className="h-64 w-full rounded-2xl object-cover" loading="lazy" decoding="async" />)}
+            </div>
+          </section>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function DcInteriorsDetails({ project, onClose }: { project: Project; onClose: () => void }) {
+  const problems = [
+    {
+      title: "Design concepts, client requirements, material selections and project data were difficult to manage through disconnected processes",
+      description: "Design concepts, client requirements, material selections and project data were difficult to manage through disconnected processes.",
+    },
+    {
+      title: "Coordination between designers, vendors and site teams created workflow gaps and project delays",
+      description: "Coordination between designers, vendors and site teams created workflow gaps and project delays.",
+    },
+    {
+      title: "Clients lacked a centralized way to track design approvals, project milestones and execution progress",
+      description: "Clients lacked a centralized way to track design approvals, project milestones and execution progress.",
+    },
+  ];
+  const solutions = [
+    {
+      title: "A Digital Design Intelligence Hub manages client requirements, concepts, materials, approvals and project data in one system",
+      description: "A Digital Design Intelligence Hub manages client requirements, concepts, materials, approvals and project data in one system.",
+    },
+    {
+      title: "A Connected Project Collaboration Engine streamlines communication between designers, vendors and site teams",
+      description: "A Connected Project Collaboration Engine streamlines communication between designers, vendors and site teams.",
+    },
+    {
+      title: "An Interactive Project Visibility Portal provides milestone updates, approval tracking, design revisions and execution progress",
+      description: "An Interactive Project Visibility Portal provides milestone updates, approval tracking, design revisions and execution progress.",
+    },
+  ];
+  const screens = [
+    { name: "Home", description: "Introduces DC Interiors with the hero, project actions and design approach panel." },
+    { name: "About", description: "Presents the studio profile, project count, experience and city presence." },
+    { name: "Services", description: "Shows residential, commercial, architecture, space planning, furniture and turnkey services." },
+    { name: "Enquiries", description: "Provides project enquiry fields and contact actions for interior design leads." },
+  ];
+
+  return (
+    <div
+      data-lenis-prevent
+      className="fixed inset-0 z-[100] h-[100dvh] overflow-y-auto overscroll-contain bg-slate-950/60 p-4 backdrop-blur-sm md:p-8"
+      onClick={onClose}
+      onWheel={(event) => event.stopPropagation()}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 32, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 32 }}
+        transition={{ duration: 0.35 }}
+        onClick={(event) => event.stopPropagation()}
+        className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-background shadow-2xl"
+      >
+        <div className="relative h-64 overflow-hidden md:h-96">
+          <img src={project.heroImage} alt={project.name} className="h-full w-full object-cover" decoding="async" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <button onClick={onClose} className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full bg-white/15 text-white backdrop-blur hover:bg-white/25" aria-label="Close project details">
+            <X size={18} />
+          </button>
+          <div className="absolute bottom-7 left-7 text-white md:bottom-10 md:left-10">
+            <div className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200">Interior Design</div>
+            <h2 className="mt-2 text-4xl font-semibold md:text-6xl">DC Interiors</h2>
+            <p className="mt-2 max-w-2xl text-white/80">{project.tagline}</p>
+          </div>
+        </div>
+
+        <div className="p-6 md:p-10">
+          <p className="max-w-4xl text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+
+          <section className="mt-12">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">01</div>
+            <h3 className="mt-2 text-3xl font-semibold">Problem Statements</h3>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {problems.map((item, index) => (
+                <article key={item.title} className="rounded-2xl border border-foreground/10 bg-background p-5">
+                  <div className="text-xs font-semibold text-primary">0{index + 1}</div>
+                  <h4 className="mt-5 font-semibold leading-snug">{item.title}</h4>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">02</div>
+            <h3 className="mt-2 text-3xl font-semibold">Solutions</h3>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {solutions.map((item, index) => (
+                <article key={item.title} className="rounded-2xl border border-foreground/10 bg-sky-950/[0.04] p-5">
+                  <div className="text-xs font-semibold text-primary">0{index + 1}</div>
+                  <h4 className="mt-5 font-semibold leading-snug">{item.title}</h4>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14 border-t border-foreground/10 pt-5">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">03</div>
+            <h3 className="mt-2 text-3xl font-semibold">Tech Stack</h3>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.tech.map((technology) => (
+                <span key={technology} className="rounded-full bg-sky-950/[0.08] px-4 py-2 text-sm">{technology}</span>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">04</div>
+            <h3 className="mt-2 text-3xl font-semibold">Screens</h3>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {screens.map((screen, index) => (
+                <article key={screen.name} className="overflow-hidden rounded-2xl border border-foreground/10 bg-background p-4">
+                  <img src={project.gallery[index]} alt={`DC Interiors ${screen.name} screen`} className="aspect-video w-full rounded-xl object-cover" loading="lazy" decoding="async" />
+                  <div className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Screen 0{index + 1}</div>
+                  <h4 className="mt-2 text-xl font-semibold">{screen.name}</h4>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">{screen.description}</p>
+                </article>
+              ))}
             </div>
           </section>
         </div>

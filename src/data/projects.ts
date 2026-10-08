@@ -20,6 +20,12 @@ export type Project = {
 const img = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+const dcScreenImages = [
+  "/images/dc-interiors-home.jpg",
+  "/images/dc-interiors-about.jpg",
+  "/images/dc-interiors-services.jpg",
+  "/images/dc-interiors-enquiries.jpg",
+];
 export const projects: Project[] = [
   {
     slug: "doctor-connect",
@@ -306,6 +312,53 @@ export const projects: Project[] = [
       img("photo-1600585154340-be6161a56a0c"),
       img("photo-1600607687939-ce8a6c25118c"),
     ],
+  },
+  {
+    slug: "dc-interiors",
+    name: "DC Interiors",
+    tagline: "Interior design website POC for client requirements, materials and project visibility",
+    category: "Interior Design",
+    accent: "rosegold",
+    description:
+      "DC Interiors is a studio platform concept for managing design concepts, approvals, materials and execution progress.",
+    purpose:
+      "Bring client requirements, design concepts, material selections, approvals and project progress together in one clear studio experience.",
+    users: ["Clients", "Interior Designers", "Vendors", "Site Teams"],
+    benefits: [
+      "Centralized client requirements and design concepts",
+      "Clear material selection and approval history",
+      "Connected communication between designers, vendors and site teams",
+      "Visible project milestones and execution progress",
+      "A polished studio presence for prospective clients",
+    ],
+    features: [
+      { title: "Studio Overview", description: "Introduce the design studio, its approach, experience and completed work.", icon: "layout" },
+      { title: "Service Discovery", description: "Explore residential, commercial, architecture, space planning, furniture and turnkey services.", icon: "building" },
+      { title: "Project Enquiries", description: "Capture client details, project types, requirements and contact preferences.", icon: "users" },
+      { title: "Design Concepts & Approvals", description: "Keep concepts, design revisions and client approvals organized in one place.", icon: "check" },
+      { title: "Materials & Project Data", description: "Connect material selections and project information to the design process.", icon: "package" },
+      { title: "Project Visibility", description: "Give clients a clear view of milestones, updates and execution progress.", icon: "gauge" },
+    ],
+    functionalities: [
+      { title: "Client Requirements & Concepts", points: ["Centralize client requirements and project information", "Present design concepts and revisions in a clear studio experience"] },
+      { title: "Materials & Approvals", points: ["Organize material selections with project context", "Track client approvals and design decisions"] },
+      { title: "Project Collaboration", points: ["Connect communication between designers, vendors and site teams", "Keep project updates and responsibilities aligned"] },
+      { title: "Milestones & Execution", points: ["Share milestone updates with clients", "Show execution progress and project status"] },
+      { title: "Studio Website & Services", points: ["Present the studio profile, experience and city presence", "Showcase residential, commercial, architecture, planning, furniture and turnkey services"] },
+      { title: "Project Enquiries", points: ["Collect name, email, phone, project type and project details", "Provide clear contact actions for new design leads"] },
+    ],
+    workflow: [
+      "Explore the studio and services",
+      "Submit a project enquiry",
+      "Capture requirements and project data",
+      "Develop and share design concepts",
+      "Select materials and record approvals",
+      "Coordinate vendors and site teams",
+      "Share milestones and execution progress",
+    ],
+    tech: ["React", "TypeScript", "TanStack Start", "TanStack Router", "Vite", "Tailwind CSS", "Radix UI", "React Hook Form", "Zod", "Motion", "Lucide React"],
+    heroImage: dcScreenImages[0],
+    gallery: dcScreenImages,
   },
 ];
 
