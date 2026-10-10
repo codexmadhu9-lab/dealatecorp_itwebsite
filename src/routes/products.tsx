@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { ArrowRight, Bot, BrainCircuit, Briefcase, Check, Cloud, Code2, Cpu, Database, Globe2, Handshake, Headphones, Layers3, LineChart, MonitorSmartphone, Network, Package, Plug, RefreshCw, Rocket, Smartphone, Users, WalletCards, X } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
 import { SectionHead } from "./index";
@@ -57,7 +56,21 @@ const productGroups = [
 ];
 
 function ProductsPage() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const navigate = useNavigate();
+  const selectedSlug = useRouterState({
+    select: (state) => state.location.pathname.startsWith("/products/")
+      ? state.location.pathname.slice("/products/".length)
+      : null,
+  });
+  const selectedProject = selectedSlug ? projects.find((project) => project.slug === selectedSlug) ?? null : null;
+
+  const openProject = (project: Project) => {
+    void navigate({ to: "/products/$slug", params: { slug: project.slug } });
+  };
+
+  const closeProject = () => {
+    void navigate({ to: "/products", replace: true });
+  };
 
   return (
     <>
@@ -101,7 +114,7 @@ function ProductsPage() {
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
                     <button
                       type="button"
-                      onClick={() => setSelectedProject(p)}
+                      onClick={() => openProject(p)}
                       className="mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-white shadow-glow transition-transform hover:scale-[1.03]"
                       style={{ background: "var(--gradient-brand)" }}
                     >
@@ -172,7 +185,7 @@ function ProductsPage() {
         </div>
       </section>
 
-      {selectedProject && <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />}
+      {selectedProject && <ProjectDetails project={selectedProject} onClose={closeProject} />}
     </>
   );
 }
