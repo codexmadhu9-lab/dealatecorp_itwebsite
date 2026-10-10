@@ -419,7 +419,7 @@ function DcInteriorsDetails({ project, onClose }: { project: Project; onClose: (
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {screens.map((screen, index) => (
                 <article key={screen.name} className="overflow-hidden rounded-2xl border border-foreground/10 bg-background p-4">
-                  <img src={project.gallery[index]} alt={`DC Interiors ${screen.name} screen`} className="aspect-video w-full rounded-xl object-cover" loading="lazy" decoding="async" />
+                  <DcInteriorsScreenPreview index={index} />
                   <div className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Screen 0{index + 1}</div>
                   <h4 className="mt-2 text-xl font-semibold">{screen.name}</h4>
                   <p className="mt-2 leading-relaxed text-muted-foreground">{screen.description}</p>
@@ -429,6 +429,43 @@ function DcInteriorsDetails({ project, onClose }: { project: Project; onClose: (
           </section>
         </div>
       </motion.div>
+    </div>
+  );
+}
+
+function DcInteriorsScreenPreview({ index }: { index: number }) {
+  const nav = (
+    <div className="flex h-7 items-center justify-between border-b border-black/10 bg-[#f4f0e7] px-3 text-[5px] font-medium uppercase tracking-[0.16em] text-[#51483d] sm:h-8 sm:px-4 sm:text-[6px]">
+      <span className="font-semibold tracking-[0.2em]">◉ DC INTERIORS</span>
+      <span className="flex gap-2 sm:gap-3">HOME <span>ABOUT</span> <span>SERVICES</span> <span>PROJECTS</span> <span>CONTACT</span></span>
+      <span className="border border-[#51483d]/50 px-2 py-1">START A PROJECT</span>
+    </div>
+  );
+
+  if (index === 0) {
+    return (
+      <div className="aspect-video overflow-hidden rounded-xl bg-cover bg-center text-white" style={{ backgroundImage: `linear-gradient(90deg,rgba(18,16,13,.64),rgba(18,16,13,.12)),url(${projects.find((p) => p.slug === "dc-interiors")?.heroImage})` }}>
+        <div className="h-full bg-black/10">{nav}<div className="flex h-[calc(100%-2rem)] flex-col justify-center px-6 sm:px-10"><span className="text-[5px] uppercase tracking-[0.24em] text-amber-100 sm:text-[7px]">INTERIOR DESIGN STUDIO · EST. 2017</span><h5 className="mt-2 text-lg font-light leading-tight sm:text-3xl">Gather together.<br /><span className="text-amber-200">Live beautifully.</span></h5><p className="mt-2 max-w-[55%] text-[6px] text-white/80 sm:text-[8px]">Open living spaces and thoughtful details, designed for the way you live.</p><span className="mt-3 w-fit bg-[#d3b16d] px-3 py-1.5 text-[5px] font-semibold uppercase tracking-wider text-black sm:text-[6px]">Explore our work</span></div></div>
+      </div>
+    );
+  }
+
+  if (index === 1) {
+    return (
+      <div className="aspect-video overflow-hidden rounded-xl bg-[#f8f6ef] text-[#302d28]">{nav}<div className="grid h-[calc(100%-2rem)] grid-cols-[1.1fr_1fr_.38fr] items-center gap-3 px-4 py-3 sm:gap-5 sm:px-8"><div className="flex h-[70%] items-end bg-cover bg-center p-2" style={{ backgroundImage: `linear-gradient(0deg,rgba(0,0,0,.35),transparent),url(${projects.find((p) => p.slug === "dc-interiors")?.heroImage})` }}><span className="text-[6px] uppercase tracking-widest text-white sm:text-[8px]">Spaces with a story</span></div><div><span className="text-[5px] uppercase tracking-[0.2em] text-[#887958] sm:text-[6px]">01 — THE STUDIO</span><h5 className="mt-2 text-[9px] font-medium sm:text-sm">Designed around the way you live.</h5><p className="mt-2 text-[6px] leading-relaxed text-[#716b61] sm:text-[8px]">DC Interiors is a design studio working across residences and workplaces, shaping interiors that feel calm, considered and personal.</p><div className="mt-3 flex gap-3 border-t border-[#c9c1b1] pt-2 text-[5px] uppercase tracking-wider sm:text-[6px]"><span><b className="block text-[9px] sm:text-sm">140+</b> Projects</span><span><b className="block text-[9px] sm:text-sm">13</b> Years</span><span><b className="block text-[9px] sm:text-sm">9</b> Cities</span></div></div><div className="h-[82%] bg-cover bg-center" style={{ backgroundImage: `url(${projects.find((p) => p.slug === "dc-interiors")?.heroImage})` }} /></div></div>
+    );
+  }
+
+  if (index === 2) {
+    const services = ["Residential interiors", "Commercial interiors", "Architecture", "Space planning", "Furniture & styling", "Turnkey solutions"];
+    return (
+      <div className="aspect-video overflow-hidden rounded-xl bg-[#1a1714] text-[#f6f0e5]">{nav}<div className="px-4 py-3 sm:px-8 sm:py-4"><span className="text-[5px] uppercase tracking-[0.2em] text-[#c6a666] sm:text-[6px]">02 — WHAT WE DO</span><h5 className="mt-1 text-[10px] font-medium sm:text-base">Design for the way you live.</h5><div className="mt-2 grid grid-cols-3 gap-1.5 sm:mt-3 sm:gap-2">{services.map((service, i) => <div key={service} className="min-h-12 border border-white/15 bg-[#27221d] p-1.5 sm:min-h-16 sm:p-2"><div className={`mb-1 h-5 bg-gradient-to-br ${i % 2 ? "from-[#77634d] to-[#c3a878]" : "from-[#4e5149] to-[#a28b68]"} sm:h-7`} /><span className="text-[5px] font-medium sm:text-[7px]">{service}</span><span className="block text-[4px] text-[#c6a666] sm:text-[5px]">Discover the approach ↗</span></div>)}</div></div></div>
+    );
+  }
+
+  return (
+    <div className="aspect-video overflow-hidden rounded-xl bg-cover bg-center text-white" style={{ backgroundImage: `linear-gradient(90deg,rgba(18,15,12,.78),rgba(18,15,12,.38)),url(${projects.find((p) => p.slug === "dc-interiors")?.heroImage})` }}>
+      {nav}<div className="grid h-[calc(100%-2rem)] grid-cols-2 items-center gap-3 px-5 py-3 sm:gap-6 sm:px-10"><div><span className="text-[5px] uppercase tracking-[0.22em] text-amber-200 sm:text-[6px]">03 — ENQUIRIES</span><h5 className="mt-2 text-sm font-light sm:text-2xl">Let’s shape a space<br />designed around you.</h5><p className="mt-2 text-[6px] text-white/70 sm:text-[8px]">Tell us what you have in mind. Our studio will be in touch.</p><span className="mt-2 inline-block border border-white/40 px-2 py-1 text-[5px] uppercase tracking-wider sm:text-[6px]">Contact the studio</span></div><div className="bg-[#171513]/85 p-3 sm:p-4"><span className="text-[8px] font-medium sm:text-xs">Tell us about your project</span><div className="mt-2 grid grid-cols-2 gap-1.5">{["Name", "Email", "Phone", "Project type"].map((field) => <div key={field} className="border border-white/25 px-1.5 py-1 text-[5px] text-white/60 sm:px-2 sm:py-1.5 sm:text-[6px]">{field} *</div>)}<div className="col-span-2 h-7 border border-white/25 px-1.5 py-1 text-[5px] text-white/60 sm:h-9 sm:px-2 sm:text-[6px]">Tell us about your project...</div><div className="col-span-2 bg-[#d3b16d] py-1.5 text-center text-[5px] font-semibold uppercase tracking-wider text-[#211d17] sm:text-[6px]">Prepare enquiry email</div></div></div></div>
     </div>
   );
 }
