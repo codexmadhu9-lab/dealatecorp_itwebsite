@@ -26,6 +26,141 @@ const dcScreenImages = [
   "/images/dc-interiors-services.jpg",
   "/images/dc-interiors-enquiries.jpg",
 ];
+
+type ReferenceProduct = {
+  slug: string;
+  name: string;
+  category: string;
+  accent: string;
+  description: string;
+  image: string;
+  users: string[];
+  features: [string, string, string];
+  workflow: [string, string, string, string];
+  gallery: [string, string, string];
+};
+
+const referenceProducts: ReferenceProduct[] = [
+  {
+    slug: "glamora", name: "Glamora", category: "Salon & Wellness", accent: "rosegold",
+    description: "Salon management for appointments and clients.", image: "/images/products/glamora-logo.webp",
+    users: ["Salon owners", "Front desk teams", "Stylists", "Clients"],
+    features: ["Appointment scheduling", "Client profiles & history", "Services, payments & reports"],
+    workflow: ["Manage services and team", "Book a client appointment", "Record service and payment", "Review salon activity"],
+    gallery: ["/images/products/glamora-screen-01-overview.webp", "/images/products/glamora-screen-02-appointments.webp", "/images/products/glamora-screen-03-clients.webp"],
+  },
+  {
+    slug: "dc-college", name: "DC College", category: "Education", accent: "indigo",
+    description: "Admissions, courses, placements and enquiries.", image: img("photo-1562774053-701939374585"),
+    users: ["Students", "Admissions teams", "Faculty", "Placement coordinators"],
+    features: ["Course discovery", "Admissions & enquiries", "Placement information"],
+    workflow: ["Explore courses", "Submit an admission enquiry", "Review student information", "Connect students with placements"],
+    gallery: ["/images/products/dc-screen-01-home.webp", "/images/products/dc-screen-02-about.webp", "/images/products/dc-screen-03-admission.webp"],
+  },
+  {
+    slug: "dc-imports-exports", name: "DC Imports & Exports", category: "Trade & Commerce", accent: "cyan",
+    description: "Global trade, logistics and media presence.", image: "/images/products/imports-exports-logo.webp",
+    users: ["Importers", "Exporters", "Trade partners", "Customers"],
+    features: ["Product discovery", "Trade enquiries", "Logistics information"],
+    workflow: ["Browse products", "Review trade information", "Submit an enquiry", "Coordinate the next steps"],
+    gallery: ["/images/products/imports-exports-screen-01-home.webp", "/images/products/imports-exports-screen-02-about.webp", "/images/products/imports-exports-screen-03-facility.webp"],
+  },
+  {
+    slug: "dc-realestate", name: "DC Real Estate", category: "Real Estate", accent: "indigo",
+    description: "Residential discovery and project enquiries.", image: "/images/products/dc-realestate-icon.webp",
+    users: ["Home buyers", "Property teams", "Sales teams", "Administrators"],
+    features: ["Residential project discovery", "Property information", "Project enquiries"],
+    workflow: ["Discover residential projects", "Review property details", "Send an enquiry", "Follow up with the sales team"],
+    gallery: ["/images/products/realestate-screen-01-home.webp", "/images/products/realestate-screen-02-about.webp", "/images/products/realestate-screen-03-project.webp"],
+  },
+  {
+    slug: "ganesh-constructions", name: "Ganesh Constructions", category: "Construction", accent: "amber",
+    description: "Construction operations and customer tracking.", image: "/images/products/ganesh-constructions-icon.webp",
+    users: ["Project managers", "Construction teams", "Customers", "Administrators"],
+    features: ["Project tracking", "Customer records", "Construction visibility"],
+    workflow: ["Create a project record", "Track progress and updates", "Keep customer information connected", "Review project status"],
+    gallery: ["/images/products/ganesh-constructions-screen-01.webp", "/images/products/ganesh-constructions-screen-02.webp", "/images/products/ganesh-constructions-screen-03.webp"],
+  },
+  {
+    slug: "dc-radiants", name: "DC Radiants", category: "Jewellery & Retail", accent: "amber",
+    description: "Jewellery inventory, sales and product discovery.", image: "/images/products/dc-radiants-icon.webp",
+    users: ["Jewellery retailers", "Sales teams", "Store managers", "Customers"],
+    features: ["Jewellery product discovery", "Inventory visibility", "Sales enquiries"],
+    workflow: ["Explore jewellery collections", "Review product details", "Check store availability", "Connect with the sales team"],
+    gallery: ["/images/products/dc-radiants-screen-01.webp", "/images/products/dc-radiants-screen-02.webp", "/images/products/dc-radiants-screen-03.webp"],
+  },
+  {
+    slug: "physiotherapy", name: "Physiotherapy", category: "Healthcare", accent: "emerald",
+    description: "Care operations, schedules and business visibility.", image: "/images/products/physiotherapy-icon.webp",
+    users: ["Physiotherapists", "Clinic teams", "Patients", "Administrators"],
+    features: ["Care operations", "Schedules & appointments", "Business visibility"],
+    workflow: ["Review the clinic dashboard", "Schedule care activities", "Track patient progress", "Review operational reports"],
+    gallery: ["/images/products/physiotherapy-screen-01.webp", "/images/products/physiotherapy-screen-02.webp", "/images/products/physiotherapy-screen-03.webp"],
+  },
+  {
+    slug: "ss-dental", name: "SS Dental", category: "Healthcare", accent: "cyan",
+    description: "Patient records, appointments and clinic tracking.", image: "/images/products/ss-dental-icon.webp",
+    users: ["Dentists", "Clinic staff", "Patients", "Administrators"],
+    features: ["Patient records", "Appointment management", "Clinic tracking"],
+    workflow: ["Register a patient", "Schedule an appointment", "Update the patient record", "Review clinic activity"],
+    gallery: ["/images/products/ss-dental-screen-01.webp", "/images/products/ss-dental-screen-02.webp", "/images/products/ss-dental-screen-03.webp"],
+  },
+  {
+    slug: "sri-venkateswara-constructions", name: "Sri Venkateswara Constructions", category: "Construction", accent: "amber",
+    description: "Project tracking and construction visibility.", image: "/images/products/sri-venkateswara-constructions-icon.webp",
+    users: ["Project owners", "Construction teams", "Contractors", "Customers"],
+    features: ["Project tracking", "Construction updates", "Progress visibility"],
+    workflow: ["Set up a project", "Coordinate construction work", "Record progress updates", "Share project status"],
+    gallery: ["/images/products/sri-venkateswara-constructions-screen-01.webp", "/images/products/sri-venkateswara-constructions-screen-02.webp", "/images/products/sri-venkateswara-constructions-screen-03.webp"],
+  },
+  {
+    slug: "lumina", name: "Lumina", category: "Hospitality", accent: "rosegold",
+    description: "Hotel bookings, guest services and operations.", image: "/images/products/lumina-icon.webp",
+    users: ["Guests", "Front desk teams", "Hotel managers", "Service teams"],
+    features: ["Hotel bookings", "Guest services", "Operations management"],
+    workflow: ["Explore the hotel", "Make a booking enquiry", "Coordinate guest services", "Manage daily operations"],
+    gallery: ["/images/products/lumina-screen-01.webp", "/images/products/lumina-screen-02.webp", "/images/products/lumina-screen-03.webp"],
+  },
+  {
+    slug: "sanjeevi-hospitals", name: "Sanjeevi Hospitals", category: "Healthcare", accent: "emerald",
+    description: "Digital health workflows and analytics.", image: "/images/products/sanjeevi-hospitals-icon.webp",
+    users: ["Patients", "Doctors", "Hospital teams", "Administrators"],
+    features: ["Digital health workflows", "Patient services", "Operational analytics"],
+    workflow: ["Find a hospital service", "Connect with the care team", "Coordinate patient workflows", "Review hospital analytics"],
+    gallery: ["/images/products/sanjeevi-hospitals-screen-01.webp", "/images/products/sanjeevi-hospitals-screen-02.webp", "/images/products/sanjeevi-hospitals-screen-03.webp"],
+  },
+  {
+    slug: "sri-parasakthi-peetam", name: "Sri Parasakthi Peetam", category: "Spiritual & Devotional", accent: "amber",
+    description: "Spiritual services, bookings and devotee engagement.", image: "/images/products/sri-parasakthi-peetam-icon.webp",
+    users: ["Devotees", "Temple teams", "Service coordinators", "Administrators"],
+    features: ["Spiritual services", "Bookings & donations", "Devotee engagement"],
+    workflow: ["Explore spiritual services", "Book a service or make a donation", "Receive service updates", "Stay connected with the community"],
+    gallery: ["/images/products/sri-parasakthi-peetam-screen-01.webp", "/images/products/sri-parasakthi-peetam-screen-02.webp", "/images/products/sri-parasakthi-peetam-screen-03.webp"],
+  },
+];
+
+const additionalCatalogProjects: Project[] = referenceProducts.map((product) => ({
+  slug: product.slug,
+  name: product.name,
+  tagline: product.description,
+  category: product.category,
+  accent: product.accent,
+  description: product.description,
+  purpose: `${product.name} brings ${product.features.map((feature) => feature.toLowerCase()).join(", ")} into one clear experience.`,
+  users: product.users,
+  benefits: product.features,
+  features: product.features.map((title, index) => ({
+    title,
+    description: `${title} are part of the ${product.name} product concept.`,
+    icon: ["layout", "calendar", "chart"][index],
+  })),
+  functionalities: product.features.map((title) => ({ title, points: [`${title} are included in the ${product.name} experience.`] })),
+  workflow: product.workflow,
+  tech: ["Product concept", "Responsive interface", "Workflow management"],
+  heroImage: product.image,
+  gallery: product.gallery,
+}));
+
 export const projects: Project[] = [
   {
     slug: "doctor-connect",
@@ -360,6 +495,7 @@ export const projects: Project[] = [
     heroImage: dcScreenImages[0],
     gallery: dcScreenImages,
   },
+  ...additionalCatalogProjects,
 ];
 
 export const projectBySlug = (slug: string) => projects.find((p) => p.slug === slug);

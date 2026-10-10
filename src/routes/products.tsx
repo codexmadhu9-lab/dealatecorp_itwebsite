@@ -13,7 +13,7 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "Explore Dealatecorp's product portfolio — Doctor Connect, MediStock, Visakha Beauty, MotoStock and Venture+ — plus enterprise business and technology services.",
+          "Explore Dealatecorp's product portfolio across healthcare, education, retail, hospitality, construction, real estate and more, plus enterprise business and technology services.",
       },
     ],
   }),
@@ -49,10 +49,13 @@ const business = [
 ];
 
 const productGroups = [
-  { title: "Healthcare Solutions", description: "Doctor Connect and MediStock ” complete platforms for patients, doctors and pharmacies.", slugs: ["doctor-connect", "medistock"] },
-  { title: "Salon & Automotive", description: "Visakha Beauty and MotoStock — connected operations for salons and motorcycle dealerships.", slugs: ["visakha-beauty", "motostock"] },
-  { title: "Real Estate", description: "Venture+ — property, customer, sales and employee management.", slugs: ["venture-plus"] },
+  { title: "Healthcare Solutions", description: "Digital platforms for care teams, patients, clinics and pharmacies.", slugs: ["doctor-connect", "medistock", "physiotherapy", "ss-dental", "sanjeevi-hospitals"] },
+  { title: "Salon & Automotive", description: "Connected operations for salons and motorcycle dealerships.", slugs: ["visakha-beauty", "glamora", "motostock"] },
   { title: "Interior Design", description: "DC Interiors is an interior design website POC for client requirements, materials and project visibility.", slugs: ["dc-interiors"] },
+  { title: "Real Estate & Construction", description: "Property discovery and construction project visibility.", slugs: ["venture-plus", "dc-realestate", "ganesh-constructions", "sri-venkateswara-constructions"] },
+  { title: "Education & Trade", description: "Digital experiences for college admissions and global trade enquiries.", slugs: ["dc-college", "dc-imports-exports"] },
+  { title: "Retail & Hospitality", description: "Product discovery, hotel bookings and guest services.", slugs: ["dc-radiants", "lumina"] },
+  { title: "Spiritual Services", description: "Digital services, bookings and engagement for devotees.", slugs: ["sri-parasakthi-peetam"] },
 ];
 
 function ProductsPage() {
@@ -83,8 +86,7 @@ function ProductsPage() {
             Enterprise-grade products, <span className="text-gradient">crafted end to end.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Five flagship products across healthcare, wellness, automotive and real estate — plus deep
-            business and technology services for global clients.
+            Products and concepts across healthcare, education, wellness, automotive, property and more — plus business and technology services for global clients.
           </p>
         </div>
       </section>
@@ -214,10 +216,16 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
             { title: "From bike selection to payment and finance", text: "Connect each customer to a motorcycle and booking, record payments, manage finance applications and track EMI schedules. Invoices and KYC documents stay with the transaction." },
             { title: "A complete journey through vehicle delivery", text: "Track pre-delivery inspection, registration and final payment before scheduling the handover. Delivery documents and a timestamped audit timeline preserve the complete transaction history." },
           ]
-      : [
-          { title: "A calm, organized salon command centre", text: "Visakha Beauty gives the front desk a live view of appointments, customers, services and team schedules for a smooth daily operation." },
-          { title: "Every guest receives a connected experience", text: "Customer preferences, previous visits, selected services and bills remain connected, helping the team offer more personal service." },
-          { title: "Turn daily operations into clear business insight", text: "Billing, employee activity, service performance and earnings are captured automatically for accurate reporting and better decisions." },
+      : project.category === "Salon & Wellness" || project.category === "Salon & Automotive"
+        ? [
+            { title: "A calm, organized salon command centre", text: project.name + " gives the front desk a live view of appointments, clients, services and team schedules." },
+            { title: "Every guest receives a connected experience", text: "Client preferences, previous visits, selected services and bills remain connected throughout the salon visit." },
+            { title: "Turn daily operations into clear business insight", text: "Service activity and payments are captured in one place for reporting and better decisions." },
+          ]
+        : [
+            { title: "A connected " + project.category.toLowerCase() + " experience", text: project.name + " brings " + project.description.toLowerCase() + " Teams can keep relevant information together and easier to act on." },
+            { title: "Clear workflows for everyday work", text: "The " + project.workflow.slice(0, 3).join(", then ").toLowerCase() + " workflow helps teams move through work with clear next steps." },
+            { title: "Useful information in one place", text: "Designed for " + project.users.join(", ").toLowerCase() + ", giving each team a clearer view of the work and its progress." },
         ];
   return (
     <div
