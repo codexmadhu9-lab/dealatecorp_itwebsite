@@ -1,30 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { X, Briefcase, Code, Cloud, Cpu, Database, Users, Headphones, LineChart, Sparkles, ArrowRight } from "lucide-react";
+import { X, Palette, Phone, Users, ArrowRight } from "lucide-react";
 import { SectionHead } from "./index";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
       { title: "Careers — Dealatecorp Innovations Pvt Ltd" },
-      { name: "description", content: "Join Dealatecorp Innovations. Openings for Java, Salesforce, Python, Full Stack, AI, Cloud and support roles." },
+      { name: "description", content: "Join Dealatecorp Innovations. Apply for our Graphic Designer and Female Telecaller openings." },
     ],
   }),
   component: CareersPage,
 });
 
 const openings = [
-  { title: "Java Developer", icon: Code, desc: "Spring Boot microservices for regulated enterprise systems." },
-  { title: "Salesforce Developer", icon: Sparkles, desc: "Apex, LWC, custom integrations and managed services." },
-  { title: "Python Developer", icon: Code, desc: "Backend services, data pipelines and automation." },
-  { title: "Full Stack Developer", icon: Code, desc: "React, TypeScript and modern backend stacks." },
-  { title: "AI Engineer", icon: Cpu, desc: "LLMs, applied ML and production-grade inference." },
-  { title: "Cloud Engineer", icon: Cloud, desc: "AWS/Azure/GCP architecture, IaC and DevOps." },
-  { title: "Data Analyst", icon: LineChart, desc: "SQL, BI dashboards and analytics narratives." },
-  { title: "Business Analyst", icon: Briefcase, desc: "Requirements, workflows and delivery ownership." },
-  { title: "Technical Support Executive", icon: Database, desc: "L1/L2 technical support for enterprise clients." },
-  { title: "Customer Support Executive", icon: Headphones, desc: "24×7 multichannel customer experience." },
+  { title: "Graphic Designer", icon: Palette, desc: "Adobe Photoshop, Illustrator, Canva, Figma, CorelDRAW, InDesign, typography, branding, visual design." },
+  { title: "Female Telecaller", icon: Phone, desc: "Female Telecaller responsible for it sales calls, lead generation, customer engagement, and follow-ups." },
 ];
 
 function CareersPage() {
