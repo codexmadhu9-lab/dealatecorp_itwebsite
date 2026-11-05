@@ -44,16 +44,6 @@ export const Route = createFileRoute("/")({
         content: "S574Vy-4ePNdlbg-prdTv9phEAoSWXgp9WtO_0lhxa0",
       },
     ],
-    scripts: [
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-01122K2V5W",
-        async: true,
-      },
-      {
-        children:
-          "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-01122K2V5W');",
-      },
-    ],
   }),
   component: HomePage,
 });
