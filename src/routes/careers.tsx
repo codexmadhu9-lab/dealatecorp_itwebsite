@@ -33,7 +33,7 @@ function CareersPage() {
             <p className="mt-4 max-w-xl text-muted-foreground">
               Join Dealatecorp Innovations Pvt Ltd and build your career with modern technologies.
               We welcome passionate freshers and experienced professionals ready to innovate, learn
-              and grow with us.
+              and grow.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {["Freshers welcome", "Experienced roles", "Hybrid setup", "Learning stipend"].map((t) => (
