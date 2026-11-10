@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { X, Palette, Phone, Users, ArrowRight } from "lucide-react";
+import { X, Palette, Phone, ArrowRight } from "lucide-react";
 import { SectionHead } from "./index";
 
 export const Route = createFileRoute("/careers")({
@@ -58,10 +58,6 @@ function CareersPage() {
                 className="h-[460px] w-full object-cover"
               />
             </div>
-            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 6, repeat: Infinity }} className="glass absolute -left-4 bottom-8 hidden rounded-2xl p-4 shadow-soft md:flex md:items-center md:gap-3">
-              <Users size={18} />
-              <div className="text-sm font-medium">Grow with a senior team</div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
