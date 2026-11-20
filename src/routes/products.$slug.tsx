@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { projectBySlug, projects, type Project } from "@/data/projects";
 import { LaptopMockup } from "@/components/ui/LaptopMockup";
 import { SectionHead } from "./index";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }): { project: Project } => {
@@ -11,7 +12,8 @@ export const Route = createFileRoute("/products/$slug")({
     if (!project) throw notFound();
     return { project };
   },
-  head: ({ loaderData }) => ({
+  head: ({ loaderData, params }) => ({
+    links: [canonicalLink(`/products/${params.slug}`)],
     meta: [
       { title: `${loaderData?.project.name} — Dealatecorp Innovations` },
       { name: "description", content: loaderData?.project.tagline ?? "" },

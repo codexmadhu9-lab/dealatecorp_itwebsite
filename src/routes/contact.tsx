@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MapPin, ExternalLink } from "lucide-react";
 import { SectionHead } from "./index";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
+    links: [canonicalLink("/contact")],
     meta: [
       { title: "Contact — Dealatecorp Innovations Pvt Ltd" },
       { name: "description", content: "Get in touch with Dealatecorp Innovations. Offices in Dwaraka Nagar and Pendurthi, Visakhapatnam." },

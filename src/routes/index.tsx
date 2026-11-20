@@ -29,9 +29,11 @@ import {
 import { Counter } from "@/components/ui/Counter";
 import { QuoteModal } from "@/components/layout/QuoteModal";
 import { useState } from "react";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [canonicalLink("/")],
     meta: [
       { title: "Dealatecorp Innovations Pvt Ltd — Enterprise Software, AI & Cloud" },
       {

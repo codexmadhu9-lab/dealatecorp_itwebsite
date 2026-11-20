@@ -5,9 +5,11 @@ import { projects, type Project } from "@/data/projects";
 import { SectionHead } from "./index";
 import { SiGoogleanalytics, SiHtml5, SiPostman, SiPython, SiReact, SiSpringboot, SiTensorflow, SiZapier, SiZendesk } from "react-icons/si";
 import { FaAws, FaSalesforce } from "react-icons/fa";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
+    links: [canonicalLink("/products")],
     meta: [
       { title: "Products & Solutions — Dealatecorp Innovations Pvt Ltd" },
       {

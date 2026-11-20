@@ -11,9 +11,11 @@ import {
 } from "lucide-react";
 import { Counter } from "@/components/ui/Counter";
 import { SectionHead } from "./index";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
+    links: [canonicalLink("/about")],
     meta: [
       { title: "About — Dealatecorp Innovations Pvt Ltd" },
       {

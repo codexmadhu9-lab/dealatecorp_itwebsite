@@ -3,9 +3,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { X, Palette, Phone, ArrowRight } from "lucide-react";
 import { SectionHead } from "./index";
+import { canonicalLink } from "@/lib/seo";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
+    links: [canonicalLink("/careers")],
     meta: [
       { title: "Careers — Dealatecorp Innovations Pvt Ltd" },
       { name: "description", content: "Join Dealatecorp Innovations. Apply for our Graphic Designer and Female Telecaller openings." },
