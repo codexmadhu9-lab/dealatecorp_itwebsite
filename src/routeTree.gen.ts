@@ -13,9 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as InternshipRouteImport } from './routes/internship'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ApiCareerApplicationRouteImport } from './routes/api.career-application'
+import { Route as InternshipApplyRouteImport } from './routes/internship.apply'
+import { Route as InternshipContentRouteImport } from './routes/internship.content'
+import { Route as InternshipPrivacyRouteImport } from './routes/internship.privacy'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
+import { Route as InternshipApplyReceivedRouteImport } from './routes/internship.apply.received'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +42,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InternshipRoute = InternshipRouteImport.update({
+  id: '/internship',
+  path: '/internship',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -47,10 +57,30 @@ const ApiCareerApplicationRoute = ApiCareerApplicationRouteImport.update({
   path: '/api/career-application',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InternshipApplyRoute = InternshipApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => InternshipRoute,
+} as any)
+const InternshipContentRoute = InternshipContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => InternshipRoute,
+} as any)
+const InternshipPrivacyRoute = InternshipPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => InternshipRoute,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ProductsRoute,
+} as any)
+const InternshipApplyReceivedRoute = InternshipApplyReceivedRouteImport.update({
+  id: '/received',
+  path: '/received',
+  getParentRoute: () => InternshipApplyRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -58,18 +88,28 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/internship': typeof InternshipRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/api/career-application': typeof ApiCareerApplicationRoute
+  '/internship/apply': typeof InternshipApplyRouteWithChildren
+  '/internship/content': typeof InternshipContentRoute
+  '/internship/privacy': typeof InternshipPrivacyRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/internship/apply/received': typeof InternshipApplyReceivedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/internship': typeof InternshipRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/api/career-application': typeof ApiCareerApplicationRoute
+  '/internship/apply': typeof InternshipApplyRouteWithChildren
+  '/internship/content': typeof InternshipContentRoute
+  '/internship/privacy': typeof InternshipPrivacyRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/internship/apply/received': typeof InternshipApplyReceivedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +117,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/internship': typeof InternshipRouteWithChildren
   '/products': typeof ProductsRouteWithChildren
   '/api/career-application': typeof ApiCareerApplicationRoute
+  '/internship/apply': typeof InternshipApplyRouteWithChildren
+  '/internship/content': typeof InternshipContentRoute
+  '/internship/privacy': typeof InternshipPrivacyRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/internship/apply/received': typeof InternshipApplyReceivedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +133,42 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/internship'
     | '/products'
     | '/api/career-application'
+    | '/internship/apply'
+    | '/internship/content'
+    | '/internship/privacy'
     | '/products/$slug'
+    | '/internship/apply/received'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/careers'
     | '/contact'
+    | '/internship'
     | '/products'
     | '/api/career-application'
+    | '/internship/apply'
+    | '/internship/content'
+    | '/internship/privacy'
     | '/products/$slug'
+    | '/internship/apply/received'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/careers'
     | '/contact'
+    | '/internship'
     | '/products'
     | '/api/career-application'
+    | '/internship/apply'
+    | '/internship/content'
+    | '/internship/privacy'
     | '/products/$slug'
+    | '/internship/apply/received'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,6 +176,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  InternshipRoute: typeof InternshipRouteWithChildren
   ProductsRoute: typeof ProductsRouteWithChildren
   ApiCareerApplicationRoute: typeof ApiCareerApplicationRoute
 }
@@ -150,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/internship': {
+      id: '/internship'
+      path: '/internship'
+      fullPath: '/internship'
+      preLoaderRoute: typeof InternshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -164,6 +232,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiCareerApplicationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/internship/apply': {
+      id: '/internship/apply'
+      path: '/apply'
+      fullPath: '/internship/apply'
+      preLoaderRoute: typeof InternshipApplyRouteImport
+      parentRoute: typeof InternshipRoute
+    }
+    '/internship/content': {
+      id: '/internship/content'
+      path: '/content'
+      fullPath: '/internship/content'
+      preLoaderRoute: typeof InternshipContentRouteImport
+      parentRoute: typeof InternshipRoute
+    }
+    '/internship/privacy': {
+      id: '/internship/privacy'
+      path: '/privacy'
+      fullPath: '/internship/privacy'
+      preLoaderRoute: typeof InternshipPrivacyRouteImport
+      parentRoute: typeof InternshipRoute
+    }
     '/products/$slug': {
       id: '/products/$slug'
       path: '/$slug'
@@ -171,8 +260,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof ProductsRoute
     }
+    '/internship/apply/received': {
+      id: '/internship/apply/received'
+      path: '/received'
+      fullPath: '/internship/apply/received'
+      preLoaderRoute: typeof InternshipApplyReceivedRouteImport
+      parentRoute: typeof InternshipApplyRoute
+    }
   }
 }
+
+interface InternshipApplyRouteChildren {
+  InternshipApplyReceivedRoute: typeof InternshipApplyReceivedRoute
+}
+
+const InternshipApplyRouteChildren: InternshipApplyRouteChildren = {
+  InternshipApplyReceivedRoute: InternshipApplyReceivedRoute,
+}
+
+const InternshipApplyRouteWithChildren = InternshipApplyRoute._addFileChildren(
+  InternshipApplyRouteChildren,
+)
+
+interface InternshipRouteChildren {
+  InternshipApplyRoute: typeof InternshipApplyRouteWithChildren
+  InternshipContentRoute: typeof InternshipContentRoute
+  InternshipPrivacyRoute: typeof InternshipPrivacyRoute
+}
+
+const InternshipRouteChildren: InternshipRouteChildren = {
+  InternshipApplyRoute: InternshipApplyRouteWithChildren,
+  InternshipContentRoute: InternshipContentRoute,
+  InternshipPrivacyRoute: InternshipPrivacyRoute,
+}
+
+const InternshipRouteWithChildren = InternshipRoute._addFileChildren(
+  InternshipRouteChildren,
+)
 
 interface ProductsRouteChildren {
   ProductsSlugRoute: typeof ProductsSlugRoute
@@ -191,6 +315,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  InternshipRoute: InternshipRouteWithChildren,
   ProductsRoute: ProductsRouteWithChildren,
   ApiCareerApplicationRoute: ApiCareerApplicationRoute,
 }
